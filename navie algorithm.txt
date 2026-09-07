@@ -1,0 +1,38 @@
+
+import java.util.*;
+
+public class GFG {
+
+    static ArrayList<Integer> search(String pat, String txt) {
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        int m = pat.length();
+        int n = txt.length();
+
+        for (int i = 0; i <= n - m; i++) {
+            int j = 0;
+
+            while (j < m && txt.charAt(i + j) == pat.charAt(j)) {
+                j++;
+            }
+
+            if (j == m) {
+                ans.add(i);
+            }
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        String txt = "aabaacaadaabaaba";
+        String pat = "aaba";
+
+        ArrayList<Integer> result = search(pat, txt);
+
+        for (int i : result) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
